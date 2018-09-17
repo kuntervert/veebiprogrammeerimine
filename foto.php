@@ -2,22 +2,12 @@
 	//echo "Siin on minu esimene PHP!";
 	$name = "Künter";
 	$surname = "Evert";
-	$todayDate = date("d.m.Y");
-	$hourNow = date("H");
-	$weekDayNow = date("N");
-	$weekDayNamesET = ["esmaspäev", "teisipäev", "kolmapäev", "neljapäev", "reede", "laupäev", "pühapäev"];
-	//var_dump ($weekDayNamesET);
-	//echo $weekDayNamesET[0];
-	;
-	if ($hourNow < 8){
-		$partOfDay = "varajane hommik ";
-	}
-	if ($hourNow >= 8 and $hourNow <16){
-	$partOfDay = "kooliaeg";
-	}
-	if ($hourNow >= 16){
-		$partOfDay = "vaba aeg";
-	}
+	$dirToRead = "../pics/";
+	$allFiles = array_slice(scandir($dirToRead), 2);
+	var_dump($allFiles);
+
+	
+	
 
 ?>
 
@@ -49,13 +39,15 @@ h1 {
   <p>Siin on minu õppetöö käigus valmistatud <a href="http://hugelol.com/" target="_blank" > veebileht</a>, millel puudub sisu ja tähtsus.</p>
   <p>Loodan, et järgmised programmeerimistunnid on sama huvitavad ning omandan uusi ja kasulikke oskuseid.</p>
   
-  <?php
-  echo "<p>Täna on " .$weekDayNamesET[$weekDayNow - 1] .", " .$todayDate."</p> \n"; 
-  echo "<p> Lehe avamise hetkel oli kell " .date("H:i:s") .", käes on " .$partOfDay .".</p> \n";
-  ?>
-  
-	<!--<img src= "https://hugelolcdn.com/i/545627.jpg" alt="Kaunis meem">-->
-	<img src= "../545627.jpg" alt="Kaunis meem">
+
+ 
+	
+	<?php
+	for ($i = 0; $i < count($allFiles); $i ++){
+		echo '<img src="' .$dirToRead .$allFiles[$i] .'" alt="pilt"><br>';
+	}
+		?>
+		
 	<p> Mu sõber Kert Liinat omab ka ühte väga lahedat <a href="../../~kertlii" target="_blank" >lehekülge </a>. </p>
 </body>
 </html>
